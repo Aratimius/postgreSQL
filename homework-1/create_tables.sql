@@ -6,9 +6,9 @@ CREATE TABLE customers
 	contact_name varchar(100)
 );
 
-CREATE TABLE employees_data
+CREATE TABLE employee
 (
-	employee_id int PRIMARY KEY,
+	employee_id smallint PRIMARY KEY,
 	first_name varchar(100),
 	last_name varchar(100),
 	title varchar(100),
@@ -16,11 +16,11 @@ CREATE TABLE employees_data
 	notes text
 );
 
-CREATE TABLE orders_data
+CREATE TABLE orders
 (
 	order_id int PRIMARY KEY,
-	customer_id varchar(100) NOT NULL,
-	employee_id smallint NOT NULL,
+	customer_id varchar(100) REFERENCES customers(customer_id),
+	employee_id smallint REFERENCES employee(employee_id),
 	order_date date,
 	ship_city varchar(100)
 );
